@@ -1,48 +1,54 @@
-import {View, Text, FlatList, Button} from 'react-native';
+import {View, Text, FlatList, Pressable} from 'react-native';
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {deleteNote, updateNote} from '../../Redux/notesSlice';
-import {RootState, AppDispatch} from '../../Redux/store';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../Redux/store';
+import {useNavigation} from '@react-navigation/native';
 
 const DetailsScreen = () => {
+  const navigation = useNavigation();
   const notes = useSelector((state: RootState) => state.notes);
-  const dispatch: AppDispatch = useDispatch();
 
-  const handleDeleteNote = (id: string) => {
-    dispatch(deleteNote(id));
-  };
-
-  const handleUpdateNote = (id: string, text: string) => {
-    dispatch(
-      updateNote({
-        id,
-        text,
-      }),
-    );
+  const handleClick = (item: object) => {
+    // console.log("Clicked", item);
+    navigation.navigate('IDetails', {item: item});
   };
   return (
-    <View style={{flex: 1, padding: 20}}>
+    <View
+      style={{
+        flex: 1,
+        paddingHorizontal: 20,
+        backgroundColor: 'white',
+      }}>
       <FlatList
         data={notes}
+        showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id}
+        numColumns={2}
         renderItem={({item}) => (
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              borderWidth: 1,
-              marginVertical: 5,
-              padding: 3,
-              backgroundColor: '',
+          <Pressable
+            style={({pressed}) => [
+              {
+                opacity: pressed ? 0.5 : 1.0,
+                flex: 1,
+                //   alignItems: 'center',
+                borderWidth: 1,
+                marginVertical: 10,
+                width: '40%',
+                height: 135,
+                marginHorizontal: 5,
+                padding: 10,
+                // backgroundColor: 'lightblue',
+                borderColor: '#1C274C',
+                borderRadius: 8
+              },
+            ]}
+            onPress={() => {
+              handleClick(item);
             }}>
-            <Text style={{width: '40%'}}>{item.text}</Text>
-            <Button title="Delete" onPress={() => handleDeleteNote(item.id)} />
-            <Button
-              title="Update"
-              onPress={() => handleUpdateNote(item.id, 'Updated Text')}
-            />
-          </View>
+            <View>
+              <Text style={{color: '#1C274C'}}>{item.text}</Text>
+            </View>
+          </Pressable>
         )}
       />
     </View>
