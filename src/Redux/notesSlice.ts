@@ -11,6 +11,8 @@ const notesSlice = createSlice({
   reducers: {
     addNote: (state: any[], action: PayloadAction<Note>) => {
       state.push(action.payload);
+      console.log(action);
+      
     },
     deleteNote: (state: any[], action: PayloadAction<string>) => {
       return state.filter((note: { id: any; }) => note.id !== action.payload);

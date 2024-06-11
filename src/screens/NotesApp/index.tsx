@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState, AppDispatch} from '../../Redux/store';
 import {addNote, deleteNote, updateNote} from '../../Redux/notesSlice';
+import { DynamicTextInput } from '../../Components';
 const NotesApp = () => {
   const [noteText, setNoteText] = useState('');
   const notes = useSelector((state: RootState) => state.notes);
@@ -30,14 +31,27 @@ const NotesApp = () => {
     );
   };
   return (
-    <View>
+    <View style={{}}>
       <View style={{padding: 20}}>
         <TextInput
           value={noteText}
           onChangeText={setNoteText}
           placeholder="Enter a note"
-          style={{borderWidth: 1, padding: 10, marginBottom: 10}}
+          style={{
+            borderWidth: 1.5,
+            borderColor: '#55AD9B',
+            borderRadius: 8,
+            padding: 10,
+            height: '50%',
+            marginBottom: 10,
+            color: '#55AD9B',
+            fontWeight: '500',
+            fontSize: 20
+          }}
+         multiline={true}
+         
         />
+
         <Button title="Add Note" onPress={handleAddNote} />
         <FlatList
           data={notes}
@@ -48,9 +62,12 @@ const NotesApp = () => {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                borderWidth: 1,
                 marginVertical: 5,
+                padding: 3,
+                backgroundColor: '',
               }}>
-              <Text>{item.text}</Text>
+              <Text style={{width: '40%'}}>{item.text}</Text>
               <Button
                 title="Delete"
                 onPress={() => handleDeleteNote(item.id)}

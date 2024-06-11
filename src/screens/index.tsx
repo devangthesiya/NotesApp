@@ -1,3 +1,5 @@
-import NotesApp from "./NotesApp";
+import NotesApp from './NotesApp';
+import Home from './Home';
+import DetailsScreen from './DetailsScreen';
 
-export {NotesApp};
+export {NotesApp, Home, DetailsScreen};
