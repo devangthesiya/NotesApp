@@ -1,4 +1,4 @@
-import {View, TextInput} from 'react-native';
+import {View, TextInput, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {AppDispatch} from '../../Redux/store';
@@ -18,31 +18,34 @@ const NotesApp = () => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
-      <View style={{padding: 20}}>
-        <TextInput
-          value={noteText}
-          onChangeText={setNoteText}
-          placeholderTextColor={'rgba(28, 39, 76, 0.7)'}
-          placeholder="Enter a note"
-          style={{
-            borderWidth: 1,
-            borderColor: '#1C274C',
-            borderRadius: 8,
-            padding: 10,
-            height: '50%',
-            marginBottom: 10,
-            color: '#1C274C',
-            fontWeight: '400',
-            fontSize: 20,
-          }}
-          multiline={true}
-        />
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <Button title={'Add Note'} onClick={handleAddNote} />
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={{flex: 1, backgroundColor: 'white'}}>
+        <View style={{padding: 20}}>
+          <TextInput
+            value={noteText}
+            onChangeText={setNoteText}
+            placeholderTextColor={'rgba(28, 39, 76, 0.7)'}
+            placeholder="Enter a note"
+            style={{
+              borderWidth: 1,
+              borderColor: '#1C274C',
+              borderRadius: 8,
+              padding: 10,
+              height: '50%',
+              marginBottom: 10,
+              color: '#1C274C',
+              fontWeight: '400',
+              fontSize: 20,
+            }}
+            multiline={true}
+          />
+          <View
+            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Button title={'Add Note'} onClick={handleAddNote} />
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 

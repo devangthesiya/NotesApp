@@ -14,9 +14,9 @@ const Button = ({title, onClick}: ButtonProp) => {
           ...styles.container,
           borderColor:
             title == 'Update'
-              ? 'skyblue'
+              ? '#34488c'
               : title == 'Delete'
-              ? 'red'
+              ? '#e83333'
               : '#1C274C',
         },
       ]}
@@ -25,9 +25,9 @@ const Button = ({title, onClick}: ButtonProp) => {
         style={{
           color:
             title == 'Update'
-              ? 'skyblue'
+              ? '#34488c'
               : title == 'Delete'
-              ? 'red'
+              ? '#e83333'
               : '#1C274C',
         }}>
         {title}
