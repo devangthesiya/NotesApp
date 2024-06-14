@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import NoResult from '../../assets/icons/NoResult.svg';
 
 const DetailsScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const notes = useSelector((state: RootState) => state.notes);
 
   const handleClick = (item: object) => {
@@ -23,6 +23,7 @@ const DetailsScreen = () => {
       {notes.length > 0 ? (
         <FlatList
           data={notes}
+          alwaysBounceVertical={false}
           showsVerticalScrollIndicator={false}
           keyExtractor={item => item.id}
           numColumns={2}
