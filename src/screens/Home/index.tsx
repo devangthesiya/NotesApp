@@ -16,7 +16,7 @@ const Home = () => {
         // tabBar={props => <CustomTabBar {...props} />}
         screenOptions={{
           headerShown: false,
-          tabBarLabelStyle: {fontSize: 12, fontWeight: '500'},
+          tabBarLabelStyle: {fontSize: 12, fontFamily: 'Jersey15-Regular',fontWeight: '500'},
         }}>
         <Tab.Screen
           name="Notes"

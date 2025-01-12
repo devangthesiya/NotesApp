@@ -57,7 +57,7 @@ const IndividualDetail = ({route}: any) => {
             borderRadius: 8,
             borderColor: '#1C274C',
           }}>
-          <Text style={{textAlign: 'left', color: '#1C274C', lineHeight: 20}}>
+          <Text style={{textAlign: 'left', color: '#1C274C', lineHeight: 20, fontFamily: 'Jersey15-Regular',}}>
             {note.text}
           </Text>
         </View>
@@ -111,9 +111,10 @@ const IndividualDetail = ({route}: any) => {
                   multiline={true}
                   style={{
                     color: '#1C274C',
-                    lineHeight: 20,
+                    lineHeight: 25,
                     justifyContent: 'center',
                     paddingVertical: 0,
+                    fontFamily: 'Jersey15-Regular',
                   }}
                 />
               </View>
@@ -145,5 +146,6 @@ const styles = StyleSheet.create({
   contentTitle: {
     fontSize: 20,
     marginBottom: 12,
+    fontFamily: 'Jersey15-Regular',
   },
 });

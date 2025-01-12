@@ -29,6 +29,7 @@ const Button = ({title, onClick}: ButtonProp) => {
               : title == 'Delete'
               ? '#e83333'
               : '#1C274C',
+              fontFamily: 'Jersey15-Regular',
         }}>
         {title}
       </Text>

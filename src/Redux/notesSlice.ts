@@ -19,6 +19,7 @@ const notesSlice = createSlice({
       const { id, text } = action.payload;
       const note = state.find((note: { id: any; }) => note.id === id);
       if (note) {
+        note.id = Date.now().toString(),
         note.text = text;
       }
     }

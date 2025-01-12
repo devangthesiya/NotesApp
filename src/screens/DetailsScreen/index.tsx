@@ -4,11 +4,11 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../Redux/store';
 import {useNavigation} from '@react-navigation/native';
 import NoResult from '../../assets/icons/NoResult.svg';
+import moment from 'moment';
 
 const DetailsScreen = () => {
   const navigation = useNavigation<any>();
   const notes = useSelector((state: RootState) => state.notes);
-
   const handleClick = (item: object) => {
     // console.log("Clicked", item);
     navigation.navigate('IDetails', {item: item});
@@ -28,6 +28,7 @@ const DetailsScreen = () => {
           keyExtractor={item => item.id}
           numColumns={2}
           renderItem={({item}) => (
+            <>
             <Pressable
               style={({pressed}) => [
                 {
@@ -43,15 +44,22 @@ const DetailsScreen = () => {
                   // backgroundColor: 'lightblue',
                   borderColor: '#1C274C',
                   borderRadius: 8,
+                  justifyContent: 'space-between',
                 },
               ]}
               onPress={() => {
                 handleClick(item);
               }}>
               <View>
-                <Text style={{color: '#1C274C'}}>{item.text}</Text>
+                <Text numberOfLines={5} style={{color: '#1C274C', fontFamily: 'Jersey15-Regular',}}>{item.text}</Text>
+              </View>
+              <View style={{alignSelf: 'flex-end'}}>
+                <Text  style={{color: '#1C274C', fontFamily: 'Jersey15-Regular',}}>
+                  {moment(parseInt(item.id)).format("Do MMM, YYYY")}
+                </Text>
               </View>
             </Pressable>
+            </>
           )}
         />
       ) : (
@@ -62,6 +70,7 @@ const DetailsScreen = () => {
               style={{
                 color: '#1C274C',
                 fontSize: 20,
+                fontFamily: 'Jersey15-Regular',
                 marginBottom: 10,
                 textAlign: 'center',
               }}>
@@ -72,6 +81,7 @@ const DetailsScreen = () => {
                 color: '#1C274C',
                 opacity: 0.8,
                 fontSize: 12,
+                fontFamily: 'Jersey15-Regular',
                 textAlign: 'center',
                 width: 200,
               }}>

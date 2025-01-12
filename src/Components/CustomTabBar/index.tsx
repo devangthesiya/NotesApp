@@ -68,6 +68,7 @@ const CustomTabBar = ({state, descriptors, navigation}) => {
               style={{
                 color: isFocused ? '#1C274C' : '#9c9c9c',
                 fontSize: 12,
+                fontFamily: 'Jersey15-Regular',
                 // marginTop: 3,
               }}>
               {label}

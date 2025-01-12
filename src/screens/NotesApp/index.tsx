@@ -36,6 +36,7 @@ const NotesApp = () => {
               color: '#1C274C',
               fontWeight: '400',
               fontSize: 20,
+              fontFamily: 'Jersey15-Regular'
             }}
             multiline={true}
           />
